@@ -1,0 +1,246 @@
+# JavaScript 문법 코드 집중 분석
+
+JavaScript는 문법 자체보다
+코드가 실행되는 과정과 구조를 이해하는 것이 중요하다.
+
+이 문서는 JavaScript 코드가 어떻게 동작하는지 분석한다.
+
+---
+
+# 1. 변수 선언 분석
+
+## 코드
+
+```javascript
+let score = 100;
+분석
+
+위 코드는 세 부분으로 나눌 수 있다.
+
+let     score      = 100;
+│        │           │
+│        │           └ 값
+│        └ 변수 이름
+└ 변수 선언 방식
+
+JavaScript 엔진은:
+
+score라는 저장 공간 생성
+100이라는 값을 저장
+이후 score라는 이름으로 접근 가능
+
+하게 처리한다.
+
+2. const 분석
+코드
+const player = {
+ name:"Hero"
+};
+분석
+
+많은 사람이 const는 완전히 변경 불가능하다고 생각한다.
+
+하지만 객체 내부 값은 변경 가능하다.
+
+player.name = "Knight";
+
+가능하다.
+
+이유:
+
+const는 변수 연결을 고정하는 것이지,
+객체 내부 데이터를 모두 잠그는 것이 아니다.
+
+3. 함수 분석
+코드
+function attack(){
+ console.log("Attack");
+}
+구조
+function
+   ↓
+함수 생성
+
+attack
+   ↓
+함수 이름
+
+()
+   ↓
+입력 공간
+
+{}
+   ↓
+실행 코드
+
+하지만 선언만 하면 실행되지 않는다.
+
+실행:
+
+attack();
+4. 화살표 함수 분석
+코드
+const add = (a,b)=>{
+ return a+b;
+}
+기존 함수 표현
+function add(a,b){
+ return a+b;
+}
+
+와 같은 역할이다.
+
+화살표 함수의 특징:
+
+짧은 문법
+콜백에서 많이 사용
+this 처리 방식이 다름
+5. 객체 분석
+코드
+const player = {
+ name:"Hero",
+ hp:100
+};
+구조
+
+객체는 데이터를 묶는 방식이다.
+
+player
+ |
+ ├ name
+ |
+ └ hp
+
+접근:
+
+player.hp
+
+결과:
+
+100
+6. 배열 분석
+코드
+let items=[
+ "Sword",
+ "Shield",
+ "Potion"
+];
+
+배열 구조:
+
+0 → Sword
+1 → Shield
+2 → Potion
+
+접근:
+
+items[0]
+
+결과:
+
+Sword
+
+JavaScript 배열은 인덱스가 0부터 시작한다.
+
+7. 조건문 분석
+코드
+if(hp <= 0){
+ console.log("Die");
+}
+
+실행 과정:
+
+hp 값 확인
+조건 비교
+결과가 true면 실행
+
+예:
+
+hp = 0
+
+이면:
+
+Die 출력
+8. 반복문 분석
+코드
+for(let i=0;i<5;i++){
+ console.log(i);
+}
+
+동작:
+
+첫 번째:
+
+i = 0
+출력
+
+반복:
+
+i 증가
+
+마지막:
+
+i = 4
+
+까지 실행
+
+결과:
+
+0
+1
+2
+3
+4
+9. 이벤트 분석
+코드
+button.onclick = function(){
+ alert("Click");
+}
+
+분석:
+
+버튼 클릭 발생
+
+↓
+
+onclick 실행
+
+↓
+
+함수 실행
+
+↓
+
+alert 출력
+
+JavaScript는 이런 이벤트 기반 구조로 웹을 제어한다.
+
+10. JavaScript 코드 실행 흐름
+
+예:
+
+console.log("Hello");
+
+과정:
+
+코드 읽기
+문법 검사
+실행 준비
+함수 호출
+결과 출력
+결론
+
+JavaScript를 잘 이해하려면:
+
+문법 암기
+↓
+코드 작성
+↓
+실행 결과 확인
+
+에서 끝나는 것이 아니라,
+
+코드가 엔진 내부에서
+어떤 과정으로 처리되는지 이해해야 한다.
+
+JavaScript는 문법보다 동작 원리를 이해하는 것이 핵심이다.
