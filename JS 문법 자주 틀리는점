@@ -1,0 +1,165 @@
+# JavaScript에서 자주 틀리는 문법 요소
+
+JavaScript는 자유도가 높은 언어이지만,
+그만큼 초보자가 예상하지 못한 동작을 만드는 경우가 많다.
+
+이 문서는 JavaScript에서 자주 발생하는 실수와
+그 이유를 분석한다.
+
+---
+
+# 1. var, let, const 차이
+
+## 잘못된 예
+
+```javascript
+var a = 10;
+var a = 20;
+
+console.log(a);
+
+var는 같은 이름의 변수를 다시 선언할 수 있다.
+
+큰 프로젝트에서는 변수 충돌 문제가 발생할 수 있다.
+
+권장 방식
+let score = 100;
+const name = "Player";
+
+let:
+
+값 변경 가능
+
+const:
+
+값 변경 불가능
+
+현재 JavaScript에서는 보통 let과 const 사용을 권장한다.
+
+2. == 와 === 혼동
+==
+
+값만 비교한다.
+
+5 == "5"
+
+결과:
+
+true
+
+JavaScript가 자동으로 형 변환을 하기 때문이다.
+
+===
+
+값과 자료형을 같이 비교한다.
+
+5 === "5"
+
+결과:
+
+false
+
+실무에서는 예상하지 못한 오류를 줄이기 위해
+=== 사용을 많이 한다.
+
+3. undefined와 null 혼동
+undefined
+
+값이 아직 지정되지 않은 상태
+
+let data;
+
+console.log(data);
+
+결과:
+
+undefined
+null
+
+일부러 비어 있다고 지정한 값
+
+let user = null;
+4. 함수 호출 실수
+잘못된 코드
+function hello(){
+ console.log("Hello");
+}
+
+hello;
+
+실행되지 않는다.
+
+올바른 코드
+hello();
+
+()를 붙여야 함수를 실행한다.
+
+5. 배열 인덱스 오류
+
+JavaScript 배열은 0부터 시작한다.
+
+let fruits = ["apple","banana","orange"];
+
+console.log(fruits[0]);
+
+결과:
+
+apple
+
+많은 언어와 달리 첫 번째 위치는 0이다.
+
+6. 비동기 처리 이해 부족
+
+잘못된 예상:
+
+console.log("A");
+
+setTimeout(()=>{
+ console.log("B");
+},1000);
+
+console.log("C");
+
+결과:
+
+A
+C
+B
+
+JavaScript는 이벤트 루프 방식으로 동작하기 때문에
+실행 순서가 예상과 다를 수 있다.
+
+7. this 사용 오류
+
+JavaScript의 this는 상황에 따라 값이 변한다.
+
+const user = {
+ name:"Kim",
+
+ show(){
+  console.log(this.name);
+ }
+}
+
+user.show();
+
+결과:
+
+Kim
+
+하지만 화살표 함수에서는 this가 다르게 동작한다.
+
+정리
+
+JavaScript에서 많이 틀리는 이유는:
+
+자동 형 변환
+동적 타입
+실행 방식
+this 규칙
+비동기 처리
+
+때문이다.
+
+JavaScript를 잘 사용하려면
+문법 암기보다 "왜 이렇게 동작하는지" 이해하는 것이 중요하다.
